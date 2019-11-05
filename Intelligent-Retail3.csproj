@@ -7,6 +7,11 @@
     <RootNamespace>Intelligent_Retail3</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20191105075953_CreateIdentitySchema.cs" />
+    <Compile Remove="Migrations\20191105075953_CreateIdentitySchema.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />

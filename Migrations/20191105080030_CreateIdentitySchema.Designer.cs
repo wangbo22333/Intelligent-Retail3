@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Intelligent_Retail3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191105075133_CreateIdentitySchema")]
+    [Migration("20191105080030_CreateIdentitySchema")]
     partial class CreateIdentitySchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
