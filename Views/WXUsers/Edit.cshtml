@@ -1,0 +1,55 @@
+﻿@model Intelligent_Retail3.Models.WXUser
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>WXUser</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="WXUserNickName" class="control-label"></label>
+                <input asp-for="WXUserNickName" class="form-control" />
+                <span asp-validation-for="WXUserNickName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WXUserOpenID" class="control-label"></label>
+                <input asp-for="WXUserOpenID" class="form-control" />
+                <span asp-validation-for="WXUserOpenID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WXUserPhone" class="control-label"></label>
+                <input asp-for="WXUserPhone" class="form-control" />
+                <span asp-validation-for="WXUserPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WXUserGender" class="control-label"></label>
+                <input asp-for="WXUserGender" class="form-control" />
+                <span asp-validation-for="WXUserGender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WXUserBirthday" class="control-label"></label>
+                <input asp-for="WXUserBirthday" class="form-control" />
+                <span asp-validation-for="WXUserBirthday" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,52 @@
+﻿@model Intelligent_Retail3.Models.WXUser
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>WXUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WXUserNickName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WXUserNickName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WXUserOpenID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WXUserOpenID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WXUserPhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WXUserPhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WXUserGender)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WXUserGender)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.WXUserBirthday)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.WXUserBirthday)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

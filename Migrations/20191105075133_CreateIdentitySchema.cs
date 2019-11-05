@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Intelligent_Retail3.Data.Migrations
+namespace Intelligent_Retail3.Migrations
 {
     public partial class CreateIdentitySchema : Migration
     {
@@ -45,6 +45,126 @@ namespace Intelligent_Retail3.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BrandCategory",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BrandID = table.Column<string>(nullable: true),
+                    BrandName = table.Column<string>(nullable: true),
+                    BrandInfo = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BrandCategory", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CommodityManage",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProductID = table.Column<string>(nullable: true),
+                    CategoryID = table.Column<string>(nullable: true),
+                    BrandID = table.Column<string>(nullable: true),
+                    ProductName = table.Column<string>(nullable: true),
+                    ProductImage = table.Column<string>(nullable: true),
+                    ProductWeight = table.Column<string>(nullable: true),
+                    ProductPrice = table.Column<string>(nullable: true),
+                    ProductStock = table.Column<int>(nullable: false),
+                    ProductSale = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommodityManage", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DeviceManage",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DeviceID = table.Column<string>(nullable: false),
+                    DeviceNumber = table.Column<string>(nullable: false),
+                    DeviceProductKey = table.Column<string>(nullable: false),
+                    DeviceSecret = table.Column<string>(nullable: false),
+                    DeviceProvince = table.Column<string>(nullable: false),
+                    DeviceCity = table.Column<string>(nullable: false),
+                    DeviceAddress = table.Column<string>(nullable: false),
+                    DeviceSetDay = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeviceManage", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DeviceProduct",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    DeviceID = table.Column<string>(nullable: true),
+                    ProductID = table.Column<string>(nullable: true),
+                    DeviceProductStock = table.Column<int>(nullable: false),
+                    DeviceProductSale = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DeviceProduct", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductCategory",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CategoryID = table.Column<string>(nullable: true),
+                    CategoryName = table.Column<string>(nullable: true),
+                    CategoryInfo = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductCategory", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WXUser",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    WXUserNickName = table.Column<string>(nullable: true),
+                    WXUserOpenID = table.Column<string>(nullable: true),
+                    WXUserPhone = table.Column<string>(nullable: true),
+                    WXUserGender = table.Column<string>(nullable: true),
+                    WXUserBirthday = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WXUser", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WXUserOrder",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    WXUserOrderID = table.Column<string>(nullable: true),
+                    WXUserPhone = table.Column<string>(nullable: true),
+                    WXProductID = table.Column<string>(nullable: true),
+                    WXProductNumber = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WXUserOrder", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -209,6 +329,27 @@ namespace Intelligent_Retail3.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "BrandCategory");
+
+            migrationBuilder.DropTable(
+                name: "CommodityManage");
+
+            migrationBuilder.DropTable(
+                name: "DeviceManage");
+
+            migrationBuilder.DropTable(
+                name: "DeviceProduct");
+
+            migrationBuilder.DropTable(
+                name: "ProductCategory");
+
+            migrationBuilder.DropTable(
+                name: "WXUser");
+
+            migrationBuilder.DropTable(
+                name: "WXUserOrder");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

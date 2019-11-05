@@ -1,0 +1,70 @@
+﻿@model Intelligent_Retail3.Models.DeviceManage
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>DeviceManage</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="DeviceID" class="control-label"></label>
+                <input asp-for="DeviceID" class="form-control" />
+                <span asp-validation-for="DeviceID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeviceNumber" class="control-label"></label>
+                <input asp-for="DeviceNumber" class="form-control" />
+                <span asp-validation-for="DeviceNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeviceProductKey" class="control-label"></label>
+                <input asp-for="DeviceProductKey" class="form-control" />
+                <span asp-validation-for="DeviceProductKey" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeviceSecret" class="control-label"></label>
+                <input asp-for="DeviceSecret" class="form-control" />
+                <span asp-validation-for="DeviceSecret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeviceProvince" class="control-label"></label>
+                <input asp-for="DeviceProvince" class="form-control" />
+                <span asp-validation-for="DeviceProvince" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeviceCity" class="control-label"></label>
+                <input asp-for="DeviceCity" class="form-control" />
+                <span asp-validation-for="DeviceCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeviceAddress" class="control-label"></label>
+                <input asp-for="DeviceAddress" class="form-control" />
+                <span asp-validation-for="DeviceAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DeviceSetDay" class="control-label"></label>
+                <input asp-for="DeviceSetDay" class="form-control" />
+                <span asp-validation-for="DeviceSetDay" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

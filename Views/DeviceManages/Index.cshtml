@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Intelligent_Retail3.Models.DeviceManage>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceProductKey)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceSecret)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceProvince)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DeviceSetDay)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceProductKey)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceSecret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceProvince)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DeviceSetDay)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

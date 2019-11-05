@@ -1,0 +1,46 @@
+﻿@model Intelligent_Retail3.Models.DeviceProduct
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DeviceProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceProductStock)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceProductStock)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceProductSale)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceProductSale)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

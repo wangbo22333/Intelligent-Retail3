@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Intelligent_Retail3.Models.WXUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WXUserNickName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WXUserOpenID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WXUserPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WXUserGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WXUserBirthday)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WXUserNickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WXUserOpenID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WXUserPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WXUserGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WXUserBirthday)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,50 @@
+﻿@model Intelligent_Retail3.Models.WXUserOrder
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<h4>WXUserOrder</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="WXUserOrderID" class="control-label"></label>
+                <input asp-for="WXUserOrderID" class="form-control" />
+                <span asp-validation-for="WXUserOrderID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WXUserPhone" class="control-label"></label>
+                <input asp-for="WXUserPhone" class="form-control" />
+                <span asp-validation-for="WXUserPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WXProductID" class="control-label"></label>
+                <input asp-for="WXProductID" class="form-control" />
+                <span asp-validation-for="WXProductID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WXProductNumber" class="control-label"></label>
+                <input asp-for="WXProductNumber" class="form-control" />
+                <span asp-validation-for="WXProductNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

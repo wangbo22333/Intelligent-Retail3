@@ -1,0 +1,43 @@
+﻿@model Intelligent_Retail3.Models.DeviceProduct
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DeviceProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProductID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceProductStock)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceProductStock)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceProductSale)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DeviceProductSale)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
