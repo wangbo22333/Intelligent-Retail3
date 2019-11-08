@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Intelligent_Retail3.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Intelligent_Retail3.Controllers
 {
@@ -14,7 +15,7 @@ namespace Intelligent_Retail3.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();
