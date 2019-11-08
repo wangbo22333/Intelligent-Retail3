@@ -42,7 +42,10 @@ namespace Intelligent_Retail3
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddCors(options => { options.AddPolicy("stdio", p => p.AllowAnyOrigin()); });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +68,8 @@ namespace Intelligent_Retail3
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            app.UseCors("stdio");//必须位于UseMVC之前
 
             app.UseMvc(routes =>
             {
