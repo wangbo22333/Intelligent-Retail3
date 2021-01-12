@@ -398,7 +398,14 @@ namespace Intelligent_Retail3.Controllers
                         WXProductNumber = 1
                     }
                     );
+                context.Users.AddRange(
+                    new Microsoft.AspNetCore.Identity.IdentityUser
+                    {
+                        Email = "986162084@qq.com",
+                        PasswordHash = ""
 
+                    }
+                    );
                 context.SaveChanges();
             }
         }

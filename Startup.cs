@@ -39,13 +39,14 @@ namespace Intelligent_Retail3
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.Configure<IdentityOptions>(options =>
             {
                 // Default Lockout settings.
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
-                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
                 // Default Password settings.
                 options.Password.RequireDigit = true;
@@ -55,7 +56,7 @@ namespace Intelligent_Retail3
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 1;
             });
-
+            
             services.AddCors(options => { options.AddPolicy("stdio", p => p.AllowAnyOrigin()); });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

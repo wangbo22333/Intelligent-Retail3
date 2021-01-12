@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Intelligent_Retail3.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class CommodityManagesController : Controller
     {
         private readonly ApplicationDbContext _context;
