@@ -14,16 +14,19 @@ namespace Intelligent_Retail3.Controllers
     public class AppUsersController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;    // 用户管理
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AppUsersController(UserManager<IdentityUser> userManager)
+        public AppUsersController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         // GET: AppUserController
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.Users.ToListAsync();
+            
             return View(user);
         }
 
