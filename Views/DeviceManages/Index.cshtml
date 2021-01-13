@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>零售柜设备管理</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">添加新的零售柜</a>
 </p>
 <table class="table">
     <thead>
@@ -47,13 +47,18 @@
                 @Html.DisplayFor(modelItem => item.DeviceID)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DeviceNumber)
+                @*@Html.DisplayFor(modelItem => item.DeviceNumber)*@
+                @item.DeviceNumber.Substring(0, 5)
+                ...
+            </td>
+            <td> 
+                @item.DeviceProductKey.Substring(0, 5)
+                ...
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DeviceProductKey)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeviceSecret)
+                @*@Html.DisplayFor(modelItem => item.DeviceSecret)*@
+                @item.DeviceSecret.Substring(0, 5)
+                ...
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DeviceProvince)
@@ -68,9 +73,9 @@
                 @Html.DisplayFor(modelItem => item.DeviceSetDay)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-group">修改</a> |
+                <a asp-action="Details" asp-route-id="@item.ID" class="btn btn-info">详情</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">删除</a>
             </td>
         </tr>
 }

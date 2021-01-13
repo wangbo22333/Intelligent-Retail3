@@ -7,11 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Intelligent_Retail3.Data;
 using Intelligent_Retail3.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Intelligent_Retail3.Controllers
 {
-    [Authorize]
     public class WXUserOrdersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -56,7 +54,7 @@ namespace Intelligent_Retail3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,WXUserOrderID,WXUserPhone,WXProductID,WXProductNumber")] WXUserOrder wXUserOrder)
+        public async Task<IActionResult> Create([Bind("ID,WXUserID,WXUserPhone,TotalPrice,WXPayNumber,State,CreateTime")] WXUserOrder wXUserOrder)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +86,7 @@ namespace Intelligent_Retail3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,WXUserOrderID,WXUserPhone,WXProductID,WXProductNumber")] WXUserOrder wXUserOrder)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,WXUserID,WXUserPhone,TotalPrice,WXPayNumber,State,CreateTime")] WXUserOrder wXUserOrder)
         {
             if (id != wXUserOrder.ID)
             {

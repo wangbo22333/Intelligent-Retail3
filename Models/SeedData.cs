@@ -385,27 +385,33 @@ namespace Intelligent_Retail3.Controllers
                 context.WXUserOrder.AddRange(
                     new WXUserOrder
                     {
-                        WXUserOrderID = "10000001",
-                        WXUserPhone = "17607000000",
-                        WXProductID = "1008",
-                        WXProductNumber = 2
+                        WXUserID = "1001",
+                        WXUserPhone = "17607000230",
+                        TotalPrice = 15,
+                        WXPayNumber = "100010001",
+                        State = 1,
+                        CreateTime = new DateTime(2020,10,2,19,12,23)
                     },
                     new WXUserOrder
                     {
-                        WXUserOrderID = "10000001",
-                        WXUserPhone = "17607000000",
-                        WXProductID = "10016",
-                        WXProductNumber = 1
-                    }
-                    );
-                context.Users.AddRange(
-                    new Microsoft.AspNetCore.Identity.IdentityUser
+                        WXUserID = "1002",
+                        WXUserPhone = "15958199156",
+                        TotalPrice = 20,
+                        WXPayNumber = "100010012",
+                        State = 1,
+                        CreateTime = new DateTime(2020, 10, 3, 8, 30, 13)
+                    },
+                    new WXUserOrder
                     {
-                        Email = "986162084@qq.com",
-                        PasswordHash = ""
-
+                        WXUserID = "1002",
+                        WXUserPhone = "15958199156",
+                        TotalPrice = 5,
+                        WXPayNumber = "100010015",
+                        State = 1,
+                        CreateTime = new DateTime(2020, 10, 5, 15, 11, 58)
                     }
                     );
+                
                 context.SaveChanges();
             }
         }

@@ -14,9 +14,9 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="WXUserOrderID" class="control-label"></label>
-                <input asp-for="WXUserOrderID" class="form-control" />
-                <span asp-validation-for="WXUserOrderID" class="text-danger"></span>
+                <label asp-for="WXUserID" class="control-label"></label>
+                <input asp-for="WXUserID" class="form-control" />
+                <span asp-validation-for="WXUserID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="WXUserPhone" class="control-label"></label>
@@ -24,14 +24,24 @@
                 <span asp-validation-for="WXUserPhone" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WXProductID" class="control-label"></label>
-                <input asp-for="WXProductID" class="form-control" />
-                <span asp-validation-for="WXProductID" class="text-danger"></span>
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="WXProductNumber" class="control-label"></label>
-                <input asp-for="WXProductNumber" class="form-control" />
-                <span asp-validation-for="WXProductNumber" class="text-danger"></span>
+                <label asp-for="WXPayNumber" class="control-label"></label>
+                <input asp-for="WXPayNumber" class="form-control" />
+                <span asp-validation-for="WXPayNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreateTime" class="control-label"></label>
+                <input asp-for="CreateTime" class="form-control" />
+                <span asp-validation-for="CreateTime" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

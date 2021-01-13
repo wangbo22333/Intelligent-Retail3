@@ -5,45 +5,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>用户订单主页</h2>
+<h2>Index</h2>
 
 <p>
-    <a>订单编号：</a>
-    <input type="text"  class="form-group"/>
-    <a asp-action="" class="btn btn-primary btn-xs">查找用户订单</a>
+    <a>订单编号</a>
+    <input />
+    <a asp-action="Create" class="btn btn-primary">查询用户订单</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.WXUserOrderID)
+                @Html.DisplayNameFor(model => model.WXUserID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.WXUserPhone)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WXProductID)
+                @Html.DisplayNameFor(model => model.TotalPrice)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.WXProductNumber)
+                @Html.DisplayNameFor(model => model.WXPayNumber)
             </th>
-            <th>操作</th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateTime)
+            </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.WXUserOrderID)
+                @Html.DisplayFor(modelItem => item.WXUserID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.WXUserPhone)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.WXProductID)
+                @Html.DisplayFor(modelItem => item.TotalPrice)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.WXProductNumber)
+                @Html.DisplayFor(modelItem => item.WXPayNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-group">修改</a> |
