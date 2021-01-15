@@ -59,7 +59,7 @@ namespace Intelligent_Retail3
                 options.Password.RequiredUniqueChars = 1;
             });
             
-            services.AddCors(options => { options.AddPolicy("", p => p.AllowAnyOrigin()); });
+            services.AddCors(options => { options.AddPolicy("any", p => p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowCredentials()); });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
@@ -86,7 +86,8 @@ namespace Intelligent_Retail3
 
             app.UseAuthentication();
 
-            app.UseCors("stdio");//必须位于UseMVC之前
+            app.UseCors("any");//必须位于UseMVC之前
+            app.UseHttpsRedirection();
 
             app.UseMvc(routes =>
             {
