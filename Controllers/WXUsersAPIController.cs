@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Intelligent_Retail3.Data;
 using Intelligent_Retail3.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Intelligent_Retail3.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("any")]
     [ApiController]
     public class WXUsersAPIController : ControllerBase
     {
@@ -44,9 +46,9 @@ namespace Intelligent_Retail3.Controllers
 
         // PUT: api/WXUsersAPI/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutWXUser(int id, WXUser wXUser)
+        public async Task<IActionResult> PutWXUser(string id, WXUser wXUser)
         {
-            if (id != wXUser.ID)
+            if (!id.Equals(wXUser.ID))
             {
                 return BadRequest();
             }
@@ -76,15 +78,22 @@ namespace Intelligent_Retail3.Controllers
         [HttpPost]
         public async Task<ActionResult<WXUser>> PostWXUser(WXUser wXUser)
         {
-            _context.WXUser.Add(wXUser);
-            await _context.SaveChangesAsync();
+            if (WXUserExists(wXUser.WXUserOpenID))
+            {
+                return null;
+            }else
+            {
+                _context.WXUser.Add(wXUser);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetWXUser", new { id = wXUser.ID }, wXUser);
+                return CreatedAtAction("GetWXUser", new { id = wXUser.ID }, wXUser);
+            }
+
         }
 
         // DELETE: api/WXUsersAPI/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<WXUser>> DeleteWXUser(int id)
+        public async Task<ActionResult<WXUser>> DeleteWXUser(string id)
         {
             var wXUser = await _context.WXUser.FindAsync(id);
             if (wXUser == null)
@@ -98,9 +107,9 @@ namespace Intelligent_Retail3.Controllers
             return wXUser;
         }
 
-        private bool WXUserExists(int id)
+        private bool WXUserExists(string id)
         {
-            return _context.WXUser.Any(e => e.ID == id);
+            return _context.WXUser.Any(e => e.WXUserOpenID.Equals(id));
         }
     }
 }
