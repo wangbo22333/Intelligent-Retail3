@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Intelligent_Retail3.Data;
 using Intelligent_Retail3.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Intelligent_Retail3.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class WXUserOrdersController : Controller
     {
         private readonly ApplicationDbContext _context;

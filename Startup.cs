@@ -59,7 +59,7 @@ namespace Intelligent_Retail3
                 options.Password.RequiredUniqueChars = 1;
             });
             
-            services.AddCors(options => { options.AddPolicy("stdio", p => p.AllowAnyOrigin()); });
+            services.AddCors(options => { options.AddPolicy("", p => p.AllowAnyOrigin()); });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             
