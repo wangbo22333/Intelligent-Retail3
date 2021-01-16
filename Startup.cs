@@ -80,14 +80,13 @@ namespace Intelligent_Retail3
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
             app.UseAuthentication();
 
             app.UseCors("any");//必须位于UseMVC之前
-            app.UseHttpsRedirection();
 
             app.UseMvc(routes =>
             {
