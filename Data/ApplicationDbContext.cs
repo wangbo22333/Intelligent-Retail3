@@ -20,5 +20,6 @@ namespace Intelligent_Retail3.Data
         public DbSet<Intelligent_Retail3.Models.ProductCategory> ProductCategory { get; set; }
         public DbSet<Intelligent_Retail3.Models.WXUser> WXUser { get; set; }
         public DbSet<Intelligent_Retail3.Models.WXUserOrder> WXUserOrder { get; set; }
+        public DbSet<Intelligent_Retail3.Models.WXUserOrderDetail> WXUserOrderDetail { get; set; }
     }
 }

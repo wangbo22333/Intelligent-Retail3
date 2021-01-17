@@ -179,6 +179,25 @@ namespace Intelligent_Retail3.Migrations
                     b.ToTable("WXUserOrder");
                 });
 
+            modelBuilder.Entity("Intelligent_Retail3.Models.WXUserOrderDetail", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("WXProductID");
+
+                    b.Property<int>("WXProductNumber");
+
+                    b.Property<string>("WXUserOrderID");
+
+                    b.Property<string>("WXUserPhone");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("WXUserOrderDetail");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
