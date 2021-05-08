@@ -14,7 +14,7 @@ namespace Intelligent_Retail3.Models
         [DisplayName("用户手机号")]
         public string WXUserPhone { get; set; }
         [DisplayName("商品总价")]
-        public decimal TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; } 
         [DisplayName("交易号")]
         public string WXPayNumber { get; set; }
         [DisplayName("订单状态")]
