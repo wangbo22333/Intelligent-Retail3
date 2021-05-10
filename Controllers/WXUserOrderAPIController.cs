@@ -73,14 +73,16 @@ namespace Intelligent_Retail3.Controllers
         }
 
         // POST: api/WXUserOrderAPI
-        [HttpPost]
-        public async Task<ActionResult<WXUserOrder>> PostWXUserOrder(WXUserOrder wXUserOrder)
-        {
-            _context.WXUserOrder.Add(wXUserOrder);
-            await _context.SaveChangesAsync();
+        //[HttpPost]
+        //public async Task<ActionResult<WXUserOrder>> PostWXUserOrder(ProductResultModel productResult)
+        //{
+        //    //productResult.ProductNumber
+            
+        //    //_context.WXUserOrder.Add(wXUserOrder);
+        //    //await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetWXUserOrder", new { id = wXUserOrder.ID }, wXUserOrder);
-        }
+        //    //return CreatedAtAction("GetWXUserOrder", new { id = wXUserOrder.ID }, wXUserOrder);
+        //}
 
         // DELETE: api/WXUserOrderAPI/5
         [HttpDelete("{id}")]

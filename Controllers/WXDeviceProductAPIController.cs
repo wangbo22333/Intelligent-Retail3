@@ -24,14 +24,13 @@ namespace Intelligent_Retail3.Controllers
         }
 
         // GET: api/WXDeviceProductAPI
-        [HttpGet("{id}")]
-        public async Task<ActionResult<List<WXDeviceProductAPI>>> GetWXDeviceProduct(string id)
+        [HttpGet]
+        public ActionResult<List<WXDeviceProductAPI>> GetWXDeviceProduct(string id)
         {
 
             List<WXDeviceProductAPI> list = new List<WXDeviceProductAPI>();
-            
 
-            return  list;
+            return list;
         }
 
 
