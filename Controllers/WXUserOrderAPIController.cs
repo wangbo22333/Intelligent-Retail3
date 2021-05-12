@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Intelligent_Retail3.Data;
 using Intelligent_Retail3.Models;
 
+
 namespace Intelligent_Retail3.Controllers
 {
     [Route("api/[controller]")]
@@ -73,16 +74,49 @@ namespace Intelligent_Retail3.Controllers
         }
 
         // POST: api/WXUserOrderAPI
-        //[HttpPost]
-        //public async Task<ActionResult<WXUserOrder>> PostWXUserOrder(ProductResultModel productResult)
-        //{
-        //    //productResult.ProductNumber
-            
-        //    //_context.WXUserOrder.Add(wXUserOrder);
-        //    //await _context.SaveChangesAsync();
+        [HttpPost]
+        public async Task<ActionResult<WXUserOrder>> PostWXUserOrder([FromForm] OrderDataModel data)
+        {
+            //string open_id, List<ProductResultModel> productResult, decimal total_price, string order_code
+            System.Diagnostics.Debug.WriteLine("正在创建订单：");
+            System.Diagnostics.Debug.WriteLine(data.OpenId);
 
-        //    //return CreatedAtAction("GetWXUserOrder", new { id = wXUserOrder.ID }, wXUserOrder);
-        //}
+            //foreach (var item in productResult)
+            //{
+            //    WXUserOrder wXUserOrder = new WXUserOrder();
+            //    wXUserOrder.WXUserID = open_id;
+            //}
+            WXUserOrder wXUserOrder = new WXUserOrder
+            {
+                WXUserID = data.OpenId,
+                TotalPrice = data.TotalPrice,
+                WXPayNumber = data.OrderCode,
+                WXUserPhone = "",
+                State = 1,
+                CreateTime = DateTime.Now
+            };
+            _context.WXUserOrder.Add(wXUserOrder);
+            List<WXUserOrderDetail> wXUserOrderDetails = new List<WXUserOrderDetail>();
+            foreach (var item in data.ProductResult)
+            {
+                WXUserOrderDetail wXUserOrderDetail = new WXUserOrderDetail
+                {
+                    WXUserOrderID = data.OrderCode,
+                    WXUserPhone = "",
+                    WXProductID = item.ProductID,
+                    WXProductNumber = item.ProductNumber,
+                };
+                wXUserOrderDetails.Add(wXUserOrderDetail);
+                _context.WXUserOrderDetail.Add(wXUserOrderDetail);
+            }
+
+            await _context.SaveChangesAsync();
+            foreach(var item in wXUserOrderDetails)
+            {
+                CreatedAtAction("GetWXUserOrderDetail", new { id = item.ID }, item);
+            }
+            return CreatedAtAction("GetWXUserOrder", new { id = wXUserOrder.ID }, wXUserOrder);
+        }
 
         // DELETE: api/WXUserOrderAPI/5
         [HttpDelete("{id}")]
