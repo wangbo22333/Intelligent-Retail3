@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Intelligent_Retail3.Data;
 using Intelligent_Retail3.Models;
-
+using Newtonsoft.Json;
 
 namespace Intelligent_Retail3.Controllers
 {
@@ -96,25 +96,29 @@ namespace Intelligent_Retail3.Controllers
                 CreateTime = DateTime.Now
             };
             _context.WXUserOrder.Add(wXUserOrder);
-            List<WXUserOrderDetail> wXUserOrderDetails = new List<WXUserOrderDetail>();
-            foreach (var item in data.ProductResult)
+            //List<WXUserOrderDetail> OrderDetails = new List<WXUserOrderDetail>();
+            List<ProductResultModel>  OrderDetails = JsonConvert.DeserializeObject<List<ProductResultModel>>(data.ProductResult);
+            System.Diagnostics.Debug.WriteLine(data.ProductResult);
+            System.Diagnostics.Debug.WriteLine("商品数据");
+            for (int i = 0; i< OrderDetails.Count(); i++)
             {
+                System.Diagnostics.Debug.WriteLine(OrderDetails[i].ProductName);
                 WXUserOrderDetail wXUserOrderDetail = new WXUserOrderDetail
                 {
                     WXUserOrderID = data.OrderCode,
                     WXUserPhone = "",
-                    WXProductID = item.ProductID,
-                    WXProductNumber = item.ProductNumber,
+                    WXProductID = OrderDetails[i].ProductID,
+                    WXProductNumber = OrderDetails[i].ProductNumber,
                 };
-                wXUserOrderDetails.Add(wXUserOrderDetail);
                 _context.WXUserOrderDetail.Add(wXUserOrderDetail);
-            }
 
-            await _context.SaveChangesAsync();
-            foreach(var item in wXUserOrderDetails)
-            {
-                CreatedAtAction("GetWXUserOrderDetail", new { id = item.ID }, item);
             }
+            
+            await _context.SaveChangesAsync();
+            //foreach(var item in wXUserOrderDetails)
+            //{
+            //    CreatedAtAction("GetWXUserOrderDetail", new { id = item.ID }, item);
+            //}
             return CreatedAtAction("GetWXUserOrder", new { id = wXUserOrder.ID }, wXUserOrder);
         }
 

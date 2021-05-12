@@ -9,13 +9,13 @@ namespace Intelligent_Retail3.Models
 {
     public class ProductResultModel
     {
-        public ProductResultModel(string productID, string productName, string productImage, float productPrice, int number)
+        public ProductResultModel(string productID, string productName, string productImage, float productPrice, int productNumber)
         {
             ProductID = productID;
             ProductName = productName;
             ImgLink = productImage;
             ProductPrice = productPrice;
-            ProductNumber = number;
+            ProductNumber = productNumber;
         }
         public string ProductID { get; set; }
         public string ProductName { get; set; }
