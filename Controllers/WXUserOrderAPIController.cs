@@ -23,24 +23,56 @@ namespace Intelligent_Retail3.Controllers
         }
 
         // GET: api/WXUserOrderAPI
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<WXUserOrder>>> GetWXUserOrder()
-        {
-            return await _context.WXUserOrder.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<WXUserOrder>>> GetWXUserOrder()
+        //{
+        //    return await _context.WXUserOrder.ToListAsync();
+        //}
 
         // GET: api/WXUserOrderAPI/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<WXUserOrder>> GetWXUserOrder(int id)
+        [HttpGet]
+        public async Task<ActionResult<List<OrderHistoryModel>>> GetWXUserOrder(string id)
         {
-            var wXUserOrder = await _context.WXUserOrder.FindAsync(id);
 
+            var wXUserOrder = await _context.WXUserOrder.Where(b => b.WXUserID == id).OrderByDescending(b => b.CreateTime).ToListAsync();
             if (wXUserOrder == null)
             {
                 return NotFound();
             }
+            List<OrderHistoryModel> orderHistories = new List<OrderHistoryModel>();
+            System.Diagnostics.Debug.WriteLine("正在查询订单：");
+            foreach (var item in wXUserOrder)
+            {
+                
+                var OrderDetails = await _context.WXUserOrderDetail.Where(b => b.WXUserOrderID == item.WXPayNumber).ToListAsync();
+                List<OrderHistoryDetail> orderHistoryDetails = new List<OrderHistoryDetail>();
+                foreach(var item_2 in OrderDetails)
+                {
+                    var single_product = _context.CommodityManage.Single(b => b.ProductID == item_2.WXProductID);
+                    OrderHistoryDetail detail = new OrderHistoryDetail { 
+                        ProductName = single_product.ProductName,
+                        ImgLink = single_product.ProductImage,
+                        Price = single_product.ProductPrice,
+                        ProductNumber = item_2.WXProductNumber
+                    };
+                    orderHistoryDetails.Add(detail);
+                }
+                OrderHistoryModel orderHistory = new OrderHistoryModel
+                {
+                    DeviceName = "西南大学零售柜",
+                    OrderDate = item.CreateTime.ToString("F"),
+                    OrderDetail = JsonConvert.SerializeObject(orderHistoryDetails),
+                    TotalPrice = (float)item.TotalPrice
 
-            return wXUserOrder;
+                };
+                System.Diagnostics.Debug.WriteLine("正在查询订单详情：");
+                orderHistories.Add(orderHistory);
+            }
+            //wXUserOrder.WXPayNumber
+            //List<WXUserOrderDetail> OrderDetails = new List<WXUserOrderDetail>();
+            //var OrderDetails = await _context.WXUserOrderDetail.Where(b => b.WXUserOrderID == wXUserOrder.WXPayNumber).ToListAsync();
+            //orderHistory.Add();
+            return orderHistories;
         }
 
         // PUT: api/WXUserOrderAPI/5
